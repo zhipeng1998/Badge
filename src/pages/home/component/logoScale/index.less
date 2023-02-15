@@ -1,0 +1,159 @@
+@import '/src/main.less';
+
+.LogoScale{
+  width: 100%;
+  height: 100%;
+
+  .swatch {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top:30vh;
+    left:35vw;
+    z-index: 999;
+
+
+    animation: move 2s  2s;
+    animation-fill-mode: forwards;
+    
+
+    .item {
+      width: 110px;
+      height: 210px;
+      position: absolute;
+      top: 0px;
+      border-radius: 5px;
+      border-top: solid 2px rgba(0, 0, 0, .8);
+      border-left: solid 3px rgba(0, 0, 0, .8);
+      border-bottom: solid 3px rgba(0, 0, 0, .8);
+      text-align: center;
+      box-sizing: border-box;
+      transform-origin: center 90%;
+      display: inline-block;
+      backface-visibility: hidden;
+      margin-left: -35px;
+      transform: rotate(0deg);
+    }
+    
+    // div:before {
+    //   width: 16px;
+    //   height: 16px;
+    //   content: url(/assets/img/hand.png);
+    //   background-color: white;
+    //   display: inline-block;
+    //   border-radius: 8px;
+    //   bottom: 10px;
+    //   position: absolute;
+    //   margin-left: -8px;
+    // }
+    
+    div:nth-child(1) {
+      background-color: @theme;
+      animation: swatch-theme-motion 2s cubic-bezier(0.4, 0.0, 0.2, 1) 1;
+      animation-fill-mode: forwards;
+    }
+    div:nth-child(2) {
+      background-color: @theme;
+      animation: swatch-blue-motion 2s cubic-bezier(0.4, 0.0, 0.2, 1) 1;
+      animation-fill-mode: forwards;
+    }
+    div:nth-child(3) {
+      background-color: @theme;
+      animation: swatch-green-motion 2s cubic-bezier(0.4, 0.0, 0.2, 1) 1;
+      animation-fill-mode: forwards;
+    }
+    div:nth-child(4) {
+      background-color: @theme;
+      animation: swatch-yellow-motion 2s cubic-bezier(0.4, 0.0, 0.2, 1) 1;
+      animation-fill-mode: forwards;
+    }
+    div:nth-child(5) {
+      background-color: @theme;
+      animation: swatch-orange-motion 2s cubic-bezier(0.4, 0.0, 0.2, 1) 1;
+      animation-fill-mode: forwards;
+    }
+
+   
+    
+  }
+  .img{
+    position: absolute;
+    display: inline-block;
+    top: -50px;
+    z-index: 100;
+    img{
+      animation: fade-hand 2s ;
+
+    }
+
+    }
+}
+
+
+@keyframes swatch-theme-motion {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-40deg);
+  }
+}
+
+@keyframes swatch-blue-motion {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-20deg);
+  }
+}
+
+@keyframes swatch-green-motion {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes swatch-yellow-motion {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(20deg);
+  }
+}
+
+
+@keyframes swatch-orange-motion {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(45deg);
+  }
+}
+@keyframes move {
+  0% {
+    top:30vh;
+    left:35vw;
+    transform: scale(1)
+  }
+  100% {
+    left:0px; 
+    top:-25px;
+    transform: scale(0.18)
+  }
+}
+
+@keyframes fade-hand {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

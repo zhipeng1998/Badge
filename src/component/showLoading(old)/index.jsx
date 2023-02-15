@@ -1,0 +1,20 @@
+import "./index.less";
+
+const ShowLoading = () => {
+  return (
+    <div className="showLoading">
+      <div className="loop-wrapper">
+        <div className="mountain"></div>
+        <div className="hill"></div>
+        <div className="tree"></div>
+        <div className="tree"></div>
+        <div className="tree"></div>
+        <div className="rock"></div>
+        <div className="truck"></div>
+        <div className="wheels"></div>
+      </div>
+    </div>
+  );
+};
+
+export default ShowLoading;

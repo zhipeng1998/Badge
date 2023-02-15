@@ -1,0 +1,57 @@
+@import '/src/main.less';
+.l-cursor {
+  line-height: 1;
+  font-weight: 400;
+  text-size-adjust: 100%;
+  color: rgb(255, 255, 255);
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  outline: 0px;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  z-index: 9999;
+  position: absolute;
+  .l-cursor__deco {
+    position: fixed;
+    top: -40px;
+    left: -40px;
+    opacity: 1;
+    z-index: 15;
+    transition: opacity 1s ease 0s, transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s, -webkit-transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+    &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    background: radial-gradient(at center center, rgba(183, 215, 118, 0.35) 0%, rgba(183, 255, 80, 0.15) 30%, rgba(0, 0, 0, 0) 100%);
+    width: 90px;
+    height: 90px;
+    pointer-events: none;
+    border-radius: 50%;
+    box-shadow: rgb(255 0 0 / 15%) 0px 0px 20px;
+    transition: all 1s cubic-bezier(0.5, 1, 0.89, 1) 0s;
+}
+  }
+  .l-cursor__point {
+    position: fixed;
+    top: -3px;
+    left: -3px;
+    z-index: 15;
+    transition: opacity 0.4s ease 0s;
+    width: 6px;
+    height: 6px;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: @select-color;
+  }
+  }
+}
+
