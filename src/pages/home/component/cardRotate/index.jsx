@@ -19,7 +19,7 @@ const CardRotate = () => {
   }, []);
 
   useEffect(() => {
-    console.log(img1, "img1", img2, "img2");
+    // console.log(img1, "img1", img2, "img2");
     // console.log(
     //   document.querySelector(".imgs").style
     // document.querySelector(".imgs").addEventListener("mouseenter",e=>{

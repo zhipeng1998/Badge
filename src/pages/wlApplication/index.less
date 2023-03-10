@@ -1,0 +1,51 @@
+@import "/src/main.less";
+
+.wlApplication {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  .top {
+    display: flex;
+
+    width: 100%;
+    height: 93vh;
+    .left {
+      display: flex;
+      flex-direction: column;
+
+      flex: 1;
+      .wallet {
+        margin-top: 40px;
+      }
+    }
+    .center {
+      display: flex;
+      flex: 2;
+    }
+    .right {
+      display: flex;
+      flex: 1;
+    }
+  }
+  .bottom {
+    width: 100%;
+    height: 7vh;
+    border-top: 4px solid @theme;
+  }
+}
+.scale {
+  animation: move-scale 4s;
+}
+
+@keyframes move-scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(0);
+  }
+}

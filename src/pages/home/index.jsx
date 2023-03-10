@@ -12,6 +12,7 @@ import loreLogo from "@/assets/img/loreLogo.png";
 import manifestoLogo from "@/assets/img/manifestoLogo.png";
 import visionLogo from "@/assets/img/visionLogo.png";
 import Smokebg from "../../component/smokebg";
+import { useNavigate } from "react-router-dom";
 // import MouseFire from "../../component/mouseFire";
 const loreText = (
   <>
@@ -76,6 +77,8 @@ const visionText = (
 );
 
 const Index = () => {
+  let navigate = useNavigate();
+
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true); //true
   const [avtive, setAvtive] = useState(undefined);
@@ -146,7 +149,7 @@ const Index = () => {
             intro={intro}
             onClose={onClose}
           />
-          <div className="App">
+          <div className="home">
             <div
               className="left"
               style={
@@ -203,12 +206,18 @@ const Index = () => {
                   </div>
                 )}
 
-                {/* <span
+                <span
                   className="item luminous"
-                  style={{ margin: "0 0 0 90px" }}
+                  style={{
+                    margin: 0,
+                    cursor: "pointer",
+                    width: "33%",
+                    textAlign: "center",
+                  }}
+                  onClick={() => navigate("/wl-application")}
                 >
-                  mint
-                </span> */}
+                  WL APPLICATION
+                </span>
               </div>
 
               <div className="r-center">

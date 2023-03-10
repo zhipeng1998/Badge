@@ -19,9 +19,22 @@
       rel="preload"
       as="font"
       href="../src/assets/font/Comicy.ttf"
+      type="font/woff"
       crossorigin
     />
     <link
+      rel="preload"
+      as="image"
+      href="%PUBLIC_URL%/manEyes.png"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="%PUBLIC_URL%/manEyeClose.png"
+      crossorigin
+    />
+    <!-- <link
       rel="preload"
       as="font"
       href="../src/assets/font/ExxaGame.ttf"
@@ -33,13 +46,48 @@
       href="../src/assets/font/GamePlayedOutline.ttf"
       crossorigin
     />
-    <link rel="preload" as="font" href="../src/assets/img/bg.jpg" crossorigin />
-    <link rel="preload" as="font" href="../src/assets/img/A1.png" crossorigin />
-    <link rel="preload" as="font" href="../src/assets/img/A2.png" crossorigin />
-    <link rel="preload" as="font" href="../src/assets/img/A3.png" crossorigin />
-    <link rel="preload" as="font" href="../src/assets/img/B1.png" crossorigin />
-    <link rel="preload" as="font" href="../src/assets/img/B2.png" crossorigin />
-    <link rel="preload" as="font" href="../src/assets/img/B3.png" crossorigin />
+    <link
+      rel="preload"
+      as="image"
+      href="../src/assets/img/bg.jpg"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="static/media/A1.png"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="../src/assets/img/A2.png"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="../src/assets/img/A3.png"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="../src/assets/img/B1.png"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="../src/assets/img/B2.png"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="../src/assets/img/B3.png"
+      crossorigin
+    /> -->
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -51,7 +99,7 @@
     -->
     <title>Klass Town</title>
   </head>
-  <body>
+  <body οnbefοreunlοad="checkLeave()">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
@@ -65,4 +113,46 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+
+  <script type="text/javascript">
+    // window.onbeforeunload = onbeforeunload_handler;
+    // window.onunload = onunload_handler;
+    // function onbeforeunload_handler() {
+    //   var warning = "确认退出?";
+    //   return warning;
+    // }
+
+    // function onunload_handler() {
+    //   var warning = "谢谢光临";
+    //   alert(warning);
+    // }
+
+    (function (window) {
+      var userAgent = navigator.userAgent;
+      let browser =
+        typeof window !== "undefined" && navigator.userAgent.toLowerCase(); //获取浏览器
+
+      var edge = browser && browser.indexOf("edge/") > 0;
+      var google = browser && /chrome\/\d+/.test(browser) && !edge;
+      var fireFox = browser && browser.indexOf("firefox") > 0;
+      console.log(edge, google, fireFox, "fireFox");
+      if (!edge && !google && !fireFox) {
+        var str = "For the best browsing experience,";
+        var str2 = "we suggest you use Chrome, Firefox, or Edge. ";
+        // "<a href='https://www.baidu.com/s?ie=UTF-8&wd=%E7%81%AB%E7%8B%90%E6%B5%8F%E8%A7%88%E5%99%A8' target='_blank' style='color:blue;'>Firefox</a>," +
+        // " or Edge.,";
+        document.writeln(
+          "<pre style='text-align:center;color:#fff;background-color:#195B40; height:100%;border:0;position:fixed;top:-12px;left:0;width:100%;z-index:1234'>" +
+            "<h2 style='padding-top:200px;margin:0'><strong>" +
+            str +
+            "<br/></strong></h2><h2>" +
+            str2
+        );
+        document.execCommand("Stop");
+      }
+    })(window);
+    function checkLeave() {
+      event.returnValue = "确定离开当前页面吗？";
+    }
+  </script>
 </html>

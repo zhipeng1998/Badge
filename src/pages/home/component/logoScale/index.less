@@ -1,6 +1,6 @@
-@import '/src/main.less';
+@import "/src/main.less";
 
-.LogoScale{
+.LogoScale {
   width: 100%;
   height: 100%;
 
@@ -9,14 +9,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    top:30vh;
-    left:35vw;
+    top: 30vh;
+    left: 35vw;
     z-index: 999;
 
-
-    animation: move 2s  2s;
+    animation: move-logo 2s 2s;
     animation-fill-mode: forwards;
-    
 
     .item {
       width: 110px;
@@ -24,9 +22,9 @@
       position: absolute;
       top: 0px;
       border-radius: 5px;
-      border-top: solid 2px rgba(0, 0, 0, .8);
-      border-left: solid 3px rgba(0, 0, 0, .8);
-      border-bottom: solid 3px rgba(0, 0, 0, .8);
+      border-top: solid 2px rgba(0, 0, 0, 0.8);
+      border-left: solid 3px rgba(0, 0, 0, 0.8);
+      border-bottom: solid 3px rgba(0, 0, 0, 0.8);
       text-align: center;
       box-sizing: border-box;
       transform-origin: center 90%;
@@ -35,7 +33,7 @@
       margin-left: -35px;
       transform: rotate(0deg);
     }
-    
+
     // div:before {
     //   width: 16px;
     //   height: 16px;
@@ -47,51 +45,45 @@
     //   position: absolute;
     //   margin-left: -8px;
     // }
-    
+
     div:nth-child(1) {
       background-color: @theme;
-      animation: swatch-theme-motion 2s cubic-bezier(0.4, 0.0, 0.2, 1) 1;
+      animation: swatch-first-motion 2s cubic-bezier(0.4, 0, 0.2, 1) 1;
       animation-fill-mode: forwards;
     }
     div:nth-child(2) {
       background-color: @theme;
-      animation: swatch-blue-motion 2s cubic-bezier(0.4, 0.0, 0.2, 1) 1;
+      animation: swatch-second-motion 2s cubic-bezier(0.4, 0, 0.2, 1) 1;
       animation-fill-mode: forwards;
     }
     div:nth-child(3) {
       background-color: @theme;
-      animation: swatch-green-motion 2s cubic-bezier(0.4, 0.0, 0.2, 1) 1;
+      animation: swatch-third-motion 2s cubic-bezier(0.4, 0, 0.2, 1) 1;
       animation-fill-mode: forwards;
     }
     div:nth-child(4) {
       background-color: @theme;
-      animation: swatch-yellow-motion 2s cubic-bezier(0.4, 0.0, 0.2, 1) 1;
+      animation: swatch-fourth-motion 2s cubic-bezier(0.4, 0, 0.2, 1) 1;
       animation-fill-mode: forwards;
     }
     div:nth-child(5) {
       background-color: @theme;
-      animation: swatch-orange-motion 2s cubic-bezier(0.4, 0.0, 0.2, 1) 1;
+      animation: swatch-fifth-motion 2s cubic-bezier(0.4, 0, 0.2, 1) 1;
       animation-fill-mode: forwards;
     }
-
-   
-    
   }
-  .img{
+  .img {
     position: absolute;
     display: inline-block;
     top: -50px;
     z-index: 100;
-    img{
-      animation: fade-hand 2s ;
-
+    img {
+      animation: fade-hand 2s;
     }
-
-    }
+  }
 }
 
-
-@keyframes swatch-theme-motion {
+@keyframes swatch-first-motion {
   0% {
     transform: rotate(0deg);
   }
@@ -100,7 +92,7 @@
   }
 }
 
-@keyframes swatch-blue-motion {
+@keyframes swatch-second-motion {
   0% {
     transform: rotate(0deg);
   }
@@ -109,7 +101,7 @@
   }
 }
 
-@keyframes swatch-green-motion {
+@keyframes swatch-third-motion {
   0% {
     transform: rotate(0deg);
   }
@@ -118,7 +110,7 @@
   }
 }
 
-@keyframes swatch-yellow-motion {
+@keyframes swatch-fourth-motion {
   0% {
     transform: rotate(0deg);
   }
@@ -127,8 +119,7 @@
   }
 }
 
-
-@keyframes swatch-orange-motion {
+@keyframes swatch-fifth-motion {
   0% {
     transform: rotate(0deg);
   }
@@ -136,16 +127,16 @@
     transform: rotate(45deg);
   }
 }
-@keyframes move {
+@keyframes move-logo {
   0% {
-    top:30vh;
-    left:35vw;
-    transform: scale(1)
+    top: 30vh;
+    left: 35vw;
+    transform: scale(1);
   }
   100% {
-    left:0px; 
-    top:-25px;
-    transform: scale(0.18)
+    left: 0px;
+    top: -25px;
+    transform: scale(0.18);
   }
 }
 
