@@ -26,6 +26,7 @@ const HomePage2 = () => {
   const connect = () => {
     setOpen(true);
   };
+  console.log(account, "account");
 
   useEffect(() => {
     onmouse(7);
@@ -41,7 +42,7 @@ const HomePage2 = () => {
     };
   };
   const activeSomeOne = (e) => {
-    if (activeDiv === e && activeDiv === undefined) {
+    if (activeDiv === e) {
       return {
         opacity: 1,
         transform: "scale(1.01)",
