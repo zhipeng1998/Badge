@@ -3,7 +3,7 @@ import $ from "jquery";
 import { useState } from "react";
 import { message } from "antd";
 import { useEffect } from "react";
-import request from "@//utils/axios";
+import request from "@/utils/axios";
 
 const FillCards = ({ FillInComplete }) => {
   const [nowCard, setNowCard] = useState(undefined);

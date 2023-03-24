@@ -6,7 +6,8 @@ axios.defaults.headers.common = {};
 const instance = axios.create({
   // 设置超时时间,单位毫秒
   timeout: 2000, //即1秒
-  baseURL: "http://192.168.2.37:8055/",
+  baseURL: "https://www.klass.town/api/",
+  // baseURL: "http://192.168.2.21:8055/",
   changeOrigin: true, //解决跨域
 });
 instance.interceptors.request.use(
@@ -83,6 +84,7 @@ instance.interceptors.response.use(
         default:
           message.info(`请求错误${error.response.data.msg}`);
       }
+      message.info(`请求错误${error.response.data.msg}`);
     }
     return Promise.reject(error);
   }

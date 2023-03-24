@@ -135,20 +135,24 @@
       var edge = browser && browser.indexOf("edge/") > 0;
       var google = browser && /chrome\/\d+/.test(browser) && !edge;
       var fireFox = browser && browser.indexOf("firefox") > 0;
-      console.log(edge, google, fireFox, "fireFox");
       if (!edge && !google && !fireFox) {
         var str = "For the best browsing experience,";
         var str2 = "we suggest you use Chrome, Firefox, or Edge. ";
+        var btn =
+          "<button style='background: transparent;border: none;font-size: 18px;color: white;' onClick='document.getElementById(`preLayout`).remove()'><strong><u>Continue to the website</u></strong></button> ";
+
         // "<a href='https://www.baidu.com/s?ie=UTF-8&wd=%E7%81%AB%E7%8B%90%E6%B5%8F%E8%A7%88%E5%99%A8' target='_blank' style='color:blue;'>Firefox</a>," +
         // " or Edge.,";
         document.writeln(
-          "<pre style='text-align:center;color:#fff;background-color:#195B40; height:100%;border:0;position:fixed;top:-12px;left:0;width:100%;z-index:1234'>" +
+          "<pre id='preLayout' style='text-align:center;color:#fff;background-color:#195B40; height:100%;border:0;position:fixed;top:-12px;left:0;width:100%;z-index:1234'>" +
             "<h2 style='padding-top:200px;margin:0'><strong>" +
             str +
             "<br/></strong></h2><h2>" +
-            str2
+            str2 +
+            "<h2>" +
+            btn
         );
-        document.execCommand("Stop");
+        // document.execCommand("Stop");
       }
     })(window);
     function checkLeave() {

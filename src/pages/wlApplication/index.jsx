@@ -2,6 +2,7 @@ import FillIn from "./component/fillIn";
 import SideBarApp from "./component/sideBar";
 import "./index.less";
 import $ from "jquery";
+import { publicKey } from "@/public.js";
 
 import { useEffect, useState } from "react";
 
@@ -11,9 +12,11 @@ import { message } from "antd";
 
 import { useWeb3React } from "@web3-react/core";
 import { injected } from "@/component/web3/index.js";
-import request from "@//utils/axios";
+import request from "@/utils/axios";
 import cookie from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import JSEncrypt from "jsencrypt";
+import Login from "./component/login";
 
 const welcome =
   "Hi mate! Welcome to KlassTown! Please connect your Ethereum Wallet, Twitter account, Discord account,and complete our Retweet task to unlock this exclusive Whitelist Appliction!";
@@ -36,20 +39,6 @@ const Index = () => {
       connectWalletOnPageLoad();
     }
   }, []);
-
-  // useEffect(() => {
-  //   injected.isAuthorized().then((isAuthorized) => {
-  //     // const hasSignedIn = window.localStorage.getItem(connectorLocalStorageKey);
-  //     console.log(isAuthorized);
-  //     if (isAuthorized) {
-  //       activate(injected, undefined, true)
-  //         .then(() => window.ethereum.removeAllListeners(["networkChanged"]))
-  //         .catch(() => {
-  //           console.log("activate");
-  //         });
-  //     }
-  //   });
-  // }, [activate]);
 
   useEffect(() => {
     if (account) {
@@ -92,9 +81,21 @@ const Index = () => {
       console.log(ex);
     }
   }
+  async function login() {
+    try {
+      console.log("login");
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   const storeToken = async () => {
-    let res = await request.postFormData("/user/login", { wallet: account });
+    let encrypt = new JSEncrypt();
+    encrypt.setPublicKey(publicKey);
+
+    let res = await request.postFormData("/user/login", {
+      wallet: encrypt.encrypt(account),
+    });
     if (res) {
       cookie.set("token", res.data, { expires: 1 });
     }
@@ -138,12 +139,13 @@ const Index = () => {
           <div className="discard" onClick={disconnect}>
             <FillIn text="Connect Discord" />
           </div>
-          <div className="twitter">
+          <div className="twitter" onClick={login}>
             <FillIn text="Connect Twitter" />
           </div>
           <div className="task" onClick={() => setTaskCompleted(true)}>
             <FillIn text="Retweet task" />
           </div>
+          <Login />
         </div>
         <div className="center">
           {taskCompleted ? (

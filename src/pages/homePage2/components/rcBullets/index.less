@@ -1,0 +1,69 @@
+.send {
+  height: 100%;
+  width: 100%;
+
+  .emoji {
+    position: relative;
+    width: 19px;
+    > div {
+      position: absolute;
+      z-index: 99;
+    }
+  }
+  .emojiIcon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-image: url("../../../../assets/img/emoji.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    color: orange;
+    &:hover,
+    &.showEmojiPicker {
+      background-image: url("../../../../assets/img/emoji.png");
+    }
+  }
+  .posi {
+    position: relative;
+    bottom: 240px;
+    width: 0;
+    right: 100px;
+  }
+  .textArea {
+    width: 600px;
+    border-radius: 10px;
+    margin: 0 30px;
+    input {
+      height: 40px;
+    }
+  }
+  .sendBtn {
+    height: 40px;
+    background: #99c555;
+    width: 100px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .showC {
+    position: relative;
+    left: 200px;
+    color: #fff;
+    button {
+      transform: scale(1.7);
+      margin-right: 30px;
+    }
+    .ant-switch.ant-switch-checked {
+      // background: #d26938;
+      background: #d26938;
+    }
+    .ant-switch {
+      background: #601986;
+    }
+  }
+}

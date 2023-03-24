@@ -13,6 +13,7 @@ import manifestoLogo from "@/assets/img/manifestoLogo.png";
 import visionLogo from "@/assets/img/visionLogo.png";
 import Smokebg from "../../component/smokebg";
 import { useNavigate } from "react-router-dom";
+import HomePage2 from "../homePage2";
 // import MouseFire from "../../component/mouseFire";
 const loreText = (
   <>
@@ -140,163 +141,144 @@ const Index = () => {
         <ShowLoading />
       ) : (
         // <LogoScale />
-        <>
-          <MyDrawer
-            open={open}
-            placement={avtive === "manifesto" ? "right" : "left"}
-            title={avtive}
-            logo={logo}
-            intro={intro}
-            onClose={onClose}
-          />
-          <div className="home">
-            <div
-              className="left"
-              style={
-                visibleAll
-                  ? { visibility: "visible" }
-                  : { visibility: "hidden" }
-              }
-            >
-              <div className="scroll">
-                <SideBar />
-              </div>
-            </div>
-            <div
-              className="right"
-              style={
-                visibleAll
-                  ? { visibility: "visible" }
-                  : { visibility: "hidden" }
-              }
-            >
-              <div className="r-top">
-                <div className="logo" style={{ visibility: "visible" }}>
-                  <LogoScale />
-
-                  {/* <img src={mainLogo} width={70} /> */}
+        <div className="container">
+          <section>
+            <MyDrawer
+              open={open}
+              placement={avtive === "manifesto" ? "right" : "left"}
+              title={avtive}
+              logo={logo}
+              intro={intro}
+              onClose={onClose}
+            />
+            <div className="home">
+              <div
+                className="left"
+                style={
+                  visibleAll
+                    ? { visibility: "visible" }
+                    : { visibility: "hidden" }
+                }
+              >
+                <div className="scroll">
+                  <SideBar />
                 </div>
-
-                {visible2 && (
-                  <div className="nav-bar" style={{ visibility: "visible" }}>
-                    <div
-                      className={`sub-title slide-bar ${
-                        avtive === "lore" && "active"
-                      }`}
-                      onClick={() => showDrawer("lore")}
-                    >
-                      LORE
-                    </div>
-                    <div
-                      className={`sub-title slide-bar ${
-                        avtive === "manifesto" && "active"
-                      }`}
-                      onClick={() => showDrawer("manifesto")}
-                    >
-                      MANIFESTO
-                    </div>
-                    <div
-                      className={`sub-title slide-bar ${
-                        avtive === "vision" && "active"
-                      }`}
-                      onClick={() => showDrawer("vision")}
-                    >
-                      VISION
-                    </div>
-                  </div>
-                )}
-
-                <span
-                  className="item luminous"
-                  style={{
-                    margin: 0,
-                    cursor: "pointer",
-                    width: "33%",
-                    textAlign: "center",
-                  }}
-                  onClick={() => navigate("/wl-application")}
-                >
-                  WL APPLICATION
-                </span>
               </div>
+              <div
+                className="right"
+                style={
+                  visibleAll
+                    ? { visibility: "visible" }
+                    : { visibility: "hidden" }
+                }
+              >
+                <div className="r-top">
+                  <div className="logo" style={{ visibility: "visible" }}>
+                    <LogoScale />
 
-              <div className="r-center">
-                <div className="bg"></div>
-                <div className="rb_right">
-                  <div className="gradually">
-                    {visibleLogo && (
-                      <div style={{ visibility: "visible" }}>
-                        <div className="title slide-bar">klass.</div>
-                        <div className="title slide-bar">town</div>
-                      </div>
-                    )}
+                    {/* <img src={mainLogo} width={70} /> */}
+                  </div>
 
-                    {visible3 && (
-                      <span
-                        className="luminous"
-                        style={
-                          visible3
-                            ? { visibility: "visible" }
-                            : { visibility: "hidden" }
-                        }
+                  {visible2 && (
+                    <div className="nav-bar" style={{ visibility: "visible" }}>
+                      <div
+                        className={`sub-title slide-bar ${
+                          avtive === "lore" && "active"
+                        }`}
+                        onClick={() => showDrawer("lore")}
                       >
-                        <span style={{ animationDelay: "0s" }}>F</span>
-                        <span style={{ animationDelay: "0.15s" }}>A</span>
-                        <span style={{ animationDelay: "0.3s" }}>S</span>
-                        <span style={{ animationDelay: "0.45s" }}>H</span>
-                        <span style={{ animationDelay: "0.6s" }}>I</span>
-                        <span style={{ animationDelay: "0.75s" }}>O</span>
-                        <span style={{ animationDelay: "0.9s" }}>N</span>
-                        <span style={{ animationDelay: "1.05s" }}> </span>
-                        <span style={{ animationDelay: "1.2s" }}>X</span>
-                        <span style={{ animationDelay: "1.35s" }}> </span>
-                        <span style={{ animationDelay: "1.5s" }}>M</span>
-                        <span style={{ animationDelay: "1.65s" }}>I</span>
-                        <span style={{ animationDelay: "1.8s" }}>S</span>
-                        <span style={{ animationDelay: "1.95s" }}>S</span>
-                        <span style={{ animationDelay: "2.1s" }}>I</span>
-                        <span style={{ animationDelay: "2.25s" }}>O</span>
-                        <span style={{ animationDelay: "2.4s" }}>N</span>
-                      </span>
-                    )}
+                        LORE
+                      </div>
+                      <div
+                        className={`sub-title slide-bar ${
+                          avtive === "manifesto" && "active"
+                        }`}
+                        onClick={() => showDrawer("manifesto")}
+                      >
+                        MANIFESTO
+                      </div>
+                      <div
+                        className={`sub-title slide-bar ${
+                          avtive === "vision" && "active"
+                        }`}
+                        onClick={() => showDrawer("vision")}
+                      >
+                        VISION
+                      </div>
+                    </div>
+                  )}
+
+                  <span
+                    className="item luminous"
+                    style={{
+                      margin: 0,
+                      cursor: "pointer",
+                      width: "33%",
+                      textAlign: "center",
+                    }}
+                    onClick={() => navigate("/wl-application")}
+                  >
+                    WL APPLICATION
+                  </span>
+                </div>
+
+                <div className="r-center">
+                  <div className="bg"></div>
+                  <div className="rb_right">
+                    <div className="gradually">
+                      {visibleLogo && (
+                        <div style={{ visibility: "visible" }}>
+                          <div className="title slide-bar">klass.</div>
+                          <div className="title slide-bar">town</div>
+                        </div>
+                      )}
+
+                      {visible3 && (
+                        <span
+                          className="luminous"
+                          style={
+                            visible3
+                              ? { visibility: "visible" }
+                              : { visibility: "hidden" }
+                          }
+                        >
+                          <span style={{ animationDelay: "0s" }}>F</span>
+                          <span style={{ animationDelay: "0.15s" }}>A</span>
+                          <span style={{ animationDelay: "0.3s" }}>S</span>
+                          <span style={{ animationDelay: "0.45s" }}>H</span>
+                          <span style={{ animationDelay: "0.6s" }}>I</span>
+                          <span style={{ animationDelay: "0.75s" }}>O</span>
+                          <span style={{ animationDelay: "0.9s" }}>N</span>
+                          <span style={{ animationDelay: "1.05s" }}> </span>
+                          <span style={{ animationDelay: "1.2s" }}>X</span>
+                          <span style={{ animationDelay: "1.35s" }}> </span>
+                          <span style={{ animationDelay: "1.5s" }}>M</span>
+                          <span style={{ animationDelay: "1.65s" }}>I</span>
+                          <span style={{ animationDelay: "1.8s" }}>S</span>
+                          <span style={{ animationDelay: "1.95s" }}>S</span>
+                          <span style={{ animationDelay: "2.1s" }}>I</span>
+                          <span style={{ animationDelay: "2.25s" }}>O</span>
+                          <span style={{ animationDelay: "2.4s" }}>N</span>
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="rb_left">
+                    <CardRotate />
                   </div>
                 </div>
-
-                <div className="rb_left">
-                  <CardRotate />
-                </div>
+                <div className="r-bottom"></div>
               </div>
-              <div className="r-bottom"></div>
             </div>
-          </div>
-          <MouseFollow />
-          {/* <MouseFire /> */}
-          <Smokebg />
-        </>
+            <MouseFollow />
+            <Smokebg />
+          </section>
+          <section>
+            <HomePage2 />
+          </section>
+        </div>
       )}
-
-      {/* <div className="App">
-        <ShowLoading />
-        <SideBar />
-        <CardRotate />
-      </div> */}
-
-      {/* <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div> */}
     </>
   );
 };

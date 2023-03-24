@@ -1,0 +1,157 @@
+@import "/src/main.less";
+
+.homePage2 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  .screen {
+    height: 94.5%;
+    width: 100%;
+    .userInfo {
+      width: 360px;
+      height: 220px;
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 2px solid @theme;
+      background: #000;
+      border-radius: 20px;
+      .top {
+        height: 192px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 0 25px;
+        .connectIn {
+          font-size: 16px;
+          font-weight: bold;
+          color: #fff;
+        }
+        .descript {
+          font-size: 14px;
+          line-height: 6px;
+          color: #ccc;
+        }
+        .signUp {
+          display: flex;
+          justify-content: center;
+          font-size: 16px;
+          font-weight: bold;
+          color: @select-color;
+          cursor: pointer;
+        }
+        .allinfo {
+          height: 124px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          .info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .in {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              span {
+                color: #fff;
+                font-size: 16px;
+                font-weight: bold;
+                padding-left: 40px;
+              }
+            }
+          }
+          .slogon {
+            color: #aaa;
+            font-size: 12px;
+            word-break: break-word;
+            width: 310px;
+          }
+        }
+
+        .ach {
+          height: 70px;
+          border-top: 2px solid @theme;
+          margin: 0 -25px;
+          padding: 0 25px;
+          .arhtitle {
+            font-size: 16px;
+            font-weight: bold;
+            color: @theme;
+          }
+          .num {
+            color: #aaa;
+            font-size: 12px;
+            line-height: 20px;
+          }
+        }
+      }
+
+      .power {
+        height: 24px;
+        border-top: 2px solid @theme;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        color: #aaa;
+      }
+    }
+    .mask {
+      height: 100%;
+      width: 100%;
+      opacity: 0.5;
+      background: @noise url("/assets/img/noise-transparent.png") repeat 0 0;
+      position: absolute;
+    }
+    .bg {
+      animation: fade-in 6s 4s;
+      background: url(/assets/img/1.png) no-repeat;
+      background-size: 100% 100%;
+      height: 100%;
+      width: 100%;
+      .module {
+        position: absolute;
+        opacity: 0.9;
+        height: 100%;
+        width: 100%;
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      .m3 {
+        position: absolute;
+        height: 570px;
+        width: 530px;
+        bottom: 445px;
+        right: 80px;
+        // background: #aaa;
+      }
+      .m7 {
+        position: absolute;
+        height: 440px;
+        width: 650px;
+        bottom: 0;
+        right: 180px;
+      }
+    }
+  }
+
+  .send {
+    animation: fade-in 6s 4s;
+    height: 5.5%;
+    width: calc(100% - 4px);
+    border: 2px solid @theme;
+
+    min-height: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
