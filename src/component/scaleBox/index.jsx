@@ -15,7 +15,6 @@ export const ScaleBox = ({ innerHeight, innerWidth, children }) => {
   const getScale = () => {
     const wh = window.innerHeight / height;
     const ww = window.innerWidth / width;
-    console.log(ww < wh ? ww : wh);
     return ww < wh ? ww : wh;
   };
   const setScales = () => {
@@ -23,7 +22,6 @@ export const ScaleBox = ({ innerHeight, innerWidth, children }) => {
     if ($("#ScaleBox")) {
       $("#ScaleBox")[0].style.setProperty("--scale", getScale());
     }
-    console.log(getScale(), $("#ScaleBox")[0].style);
   };
   const debounce = (fn, delay) => {
     const delays = delay || 500;

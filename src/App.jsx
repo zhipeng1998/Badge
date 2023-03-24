@@ -40,7 +40,6 @@ function App() {
 
   const getUserInfo = async () => {
     let res = await request.post("/user/info");
-    console.log(res);
     if (res && res.data) {
       setUser(res.data);
     }

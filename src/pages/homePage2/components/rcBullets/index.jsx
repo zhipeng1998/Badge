@@ -90,7 +90,6 @@ const RcBullet = ({ login }) => {
   };
 
   const getBarrage = async () => {
-    console.log("getBarrage");
     let res = await request.get("/barrage/barrage_list");
     if (res) {
       res.data.data.forEach((item) => {
