@@ -60,7 +60,7 @@ const HomePage2 = () => {
     <ScaleBox>
       <div className="homePage2">
         <div className="screen">
-          <div className="userInfo">
+          {/* <div className="userInfo">
             {!account && !user.nickname ? (
               <div className="top">
                 <LoginModal open={open} onClose={() => setOpen(false)} />
@@ -87,10 +87,7 @@ const HomePage2 = () => {
                       }}
                     />
 
-                    {/* <HomeOutlined
-                    style={{ fontSize: 25, color: "#fff" }}
-                  
-                  /> */}
+                 
                   </div>
                   <div className="slogon">{user.motto}</div>
                 </div>
@@ -132,7 +129,7 @@ const HomePage2 = () => {
             <div className="power">
               <i>Powered by Kudos To Us</i>
             </div>
-          </div>
+          </div> */}
           {activeDiv && <div className="mask"></div>}
 
           <div className="bg">

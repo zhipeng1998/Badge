@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的徽章墙</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #f72585;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4cc9f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7ff;
+            color: var(--dark-color);
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .progress-container {
+            background-color: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .progress-bar {
+            height: 20px;
+            background-color: #e9ecef;
+            border-radius: 10px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: var(--success-color);
+            border-radius: 10px;
+            width: 65%; /* 示例进度 */
+            transition: width 0.5s ease;
+        }
+        
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .badge-wall {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .badge {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 16px rgba(0,0,0,0.1);
+        }
+        
+        .badge-header {
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .badge-icon {
+            width: 70px;
+            height: 70px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            color: var(--primary-color);
+        }
+        
+        .badge-content {
+            padding: 20px;
+        }
+        
+        .badge-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .badge-desc {
+            font-size: 14px;
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+        
+        .badge-date {
+            font-size: 12px;
+            color: #adb5bd;
+        }
+        
+        .badge-rarity {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .common { background-color: #e9ecef; color: #495057; }
+        .rare { background-color: #4cc9f0; color: white; }
+        .epic { background-color: #7209b7; color: white; }
+        .legendary { background-color: #f9c74f; color: #7a5900; }
+        
+        .locked {
+            opacity: 0.6;
+            filter: grayscale(0.7);
+        }
+        
+        .locked .badge-header {
+            background: linear-gradient(135deg, #adb5bd, #6c757d);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .badge-wall {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>我的成就徽章墙</h1>
+        <p>展示我已获得的各种技能与成就徽章</p>
+        
+        <div class="progress-container">
+            <div>收集进度: <span id="collected">13</span>/<span id="total">20</span> 个徽章</div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="filters">
+        <button class="filter-btn active" data-filter="all">全部</button>
+        <button class="filter-btn" data-filter="技术">技术</button>
+        <button class="filter-btn" data-filter="设计">设计</button>
+        <button class="filter-btn" data-filter="语言">语言</button>
+        <button class="filter-btn" data-filter="其他">其他</button>
+        <button class="filter-btn" data-filter="locked">未获得</button>
+    </div>
+    
+    <div class="badge-wall">
+        <!-- 徽章将通过JavaScript动态生成 -->
+    </div>
+    
+    <footer>
+        <p>持续更新中 · 最后更新: 2023年6月15日</p>
+    </footer>
+
+    <script>
+        // 徽章数据
+        const badges = [
+            { id: 1, title: "HTML5 专家", description: "掌握所有HTML5特性", category: "技术", date: "2023-01-15", rarity: "common", icon: "🚀", locked: false },
+            { id: 2, title: "CSS3 大师", description: "精通CSS3动画与布局", category: "技术", date: "2023-02-20", rarity: "common", icon: "🎨", locked: false },
+            { id: 3, title: "JavaScript 高手", description: "深入理解JavaScript核心概念", category: "技术", date: "2023-03-10", rarity: "rare", icon: "⚡", locked: false },
+            { id: 4, title: "React 开发者", description: "能够构建复杂的React应用", category: "技术", date: "2023-04-05", rarity: "rare", icon: "⚛️", locked: false },
+            { id: 5, title: "UI/UX 设计师", description: "创建美观且易用的界面", category: "设计", date: "2023-01-28", rarity: "epic", icon: "✨", locked: false },
+            { id: 6, title: "Python 程序员", description: "使用Python解决实际问题", category: "技术", date: "2023-05-12", rarity: "common", icon: "🐍", locked: false },
+            { id: 7, title: "英语流利", description: "能够进行专业英语交流", category: "语言", date: "2023-03-22", rarity: "rare", icon: "🌎", locked: false },
+            { id: 8, title: "团队协作", description: "在团队项目中表现卓越", category: "其他", date: "2023-02-14", rarity: "common", icon: "👥", locked: false },
+            { id: 9, title: "开源贡献者", description: "为开源项目做出贡献", category: "技术", date: null, rarity: "epic", icon: "📦", locked: true },
+            { id: 10, title: "全栈开发者", description: "同时精通前后端开发", category: "技术", date: "2023-05-30", rarity: "legendary", icon: "🌟", locked: false },
+            { id: 11, title: "日语N2", description: "通过日语能力测试N2级别", category: "语言", date: null, rarity: "rare", icon: "🗾", locked: true },
+            { id: 12, title: "算法专家", description: "精通数据结构和算法", category: "技术", date: "2023-04-18", rarity: "epic", icon: "🧠", locked: false },
+            { id: 13, title: "演讲高手", description: "能够进行有效的技术分享", category: "其他", date: "2023-03-05", rarity: "common", icon: "🎤", locked: false },
+            { id: 14, title: "TypeScript", description: "使用TypeScript构建大型应用", category: "技术", date: "2023-06-10", rarity: "rare", icon: "📝", locked: false },
+            { id: 15, title: "Node.js 开发者", description: "构建高性能后端服务", category: "技术", date: null, rarity: "epic", icon: "🟢", locked: true },
+            { id: 16, title: "UI动效设计", description: "创建流畅的用户界面动效", category: "设计", date: "2023-02-08", rarity: "rare", icon: "🎬", locked: false },
+            { id: 17, title: "DevOps 实践", description: "熟悉CI/CD流程与工具", category: "技术", date: null, rarity: "epic", icon: "🔧", locked: true },
+            { id: 18, title: "机器学习入门", description: "理解机器学习基础概念", category: "技术", date: "2023-05-20", rarity: "rare", icon: "🤖", locked: false },
+            { id: 19, title: "德语初学者", description: "掌握基础德语交流", category: "语言", date: "2023-04-02", rarity: "common", icon: "🇩🇪", locked: false },
+            { id: 20, title: "技术博客作者", description: "定期分享技术文章", category: "其他", date: null, rarity: "epic", icon: "✍️", locked: true }
+        ];
+
+        // 初始化徽章墙
+        function initBadgeWall() {
+            const badgeWall = document.querySelector('.badge-wall');
+            badgeWall.innerHTML = '';
+            
+            badges.forEach(badge => {
+                const badgeElement = document.createElement('div');
+                badgeElement.className = `badge ${badge.locked ? 'locked' : ''}`;
+                badgeElement.dataset.category = badge.category;
+                badgeElement.dataset.locked = badge.locked;
+                
+                badgeElement.innerHTML = `
+                    <div class="badge-header">
+                        <div class="badge-icon">${badge.icon}</div>
+                    </div>
+                    <div class="badge-content">
+                        <h3 class="badge-title">${badge.title}</h3>
+                        <p class="badge-desc">${badge.description}</p>
+                        <div class="badge-date">${badge.date ? `获得时间: ${badge.date}` : '尚未获得'}</div>
+                    </div>
+                    <span class="badge-rarity ${badge.rarity}">${badge.rarity}</span>
+                `;
+                
+                badgeWall.appendChild(badgeElement);
+            });
+            
+            // 更新进度
+            const collected = badges.filter(badge => !badge.locked).length;
+            document.getElementById('collected').textContent = collected;
+            document.getElementById('total').textContent = badges.length;
+            document.querySelector('.progress-fill').style.width = `${(collected / badges.length) * 100}%`;
+        }
+        
+        // 筛选功能
+        function setupFilters() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // 更新活动按钮
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    const filter = btn.dataset.filter;
+                    const badges = document.querySelectorAll('.badge');
+                    
+                    badges.forEach(badge => {
+                        if (filter === 'all') {
+                            badge.style.display = 'block';
+                        } else if (filter === 'locked') {
+                            if (badge.dataset.locked === 'true') {
+                                badge.style.display = 'block';
+                            } else {
+                                badge.style.display = 'none';
+                            }
+                        } else {
+                            if (badge.dataset.category === filter) {
+                                badge.style.display = 'block';
+                            } else {
+                                badge.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+        }
+        
+        // 页面加载时初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            initBadgeWall();
+            setupFilters();
+        });
+    </script>
+</body>
+</html>

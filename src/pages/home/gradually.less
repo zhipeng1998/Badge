@@ -1,43 +1,43 @@
-@import '/src/main.less';
+@import "/src/main.less";
 
 @import url("https://fonts.googleapis.com/css?family=Lato");
 @import url("https://fonts.googleapis.com/css?family=Lora:400,400i,700");
 @font-face {
-  font-family: 'Comicy';
-  src: url('../../assets/font/Comicy.ttf');
+  font-family: "Comicy";
+  src: url("../../assets/font/Comicy.ttf");
 }
 @font-face {
-  font-family: 'ExxaGame';
+  font-family: "ExxaGame";
   src: url(../../assets/font/ExxaGame.ttf);
 }
 
 .gradually {
   display: flex;
   flex-direction: column;
-  margin: 175px 0 0 95px;
+  margin: 275px 0 0 95px;
 }
 
 .title {
   margin: 0;
-  font-family: 'Comicy';
-  font-size: 150px;
-  line-height: 150px;
+  font-family: cursive;
+  font-size: 70px;
+  line-height: 70px;
   // font-weight: 800;
 
   &::before {
-    background: #FF4081;
+    background: #ff4081;
   }
 }
 
 .sub-title {
   margin: 0;
-  font-family: 'ExxaGame';
+  font-family: cursive;
   font-size: 36px;
   line-height: 36px;
   cursor: pointer;
 
   &::before {
-    background: #FF4081;
+    background: #ff4081;
   }
 }
 
@@ -55,13 +55,12 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #B7FF50;
+    background: #b7ff50;
     transform: scaleX(0);
     transform-origin: left;
     animation: slide-in-out 2s cubic-bezier(0.75, 0, 0, 1) forwards;
   }
 }
-
 
 @keyframes slide-in-out {
   50% {
@@ -82,36 +81,32 @@
 @keyframes fill-text-white {
   to {
     color: @theme;
-
   }
 }
 
-
-.luminous{
+.luminous {
   // text-shadow: 0 0 25px white;
   color: @select-color;
-  font-family: 'ExxaGame';
+  font-family: "ExxaGame";
   font-size: 36px;
   line-height: 40px;
   margin: 30px 0 0 20px;
-  span{
-    animation: glow-in 0.8s both
-
+  span {
+    animation: glow-in 0.8s both;
   }
-
 }
 @keyframes glow-in {
   0% {
     opacity: 0;
-}
-65% {
-  opacity: 1;
-  text-shadow: 0 0 25px white;
-}
-75% {
-  opacity: 1;
-}
-100% {
-  opacity: 0.7;
-}
+  }
+  65% {
+    opacity: 1;
+    text-shadow: 0 0 25px white;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
 }

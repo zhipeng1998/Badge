@@ -8,40 +8,19 @@ import MouseFollow from "../../component/mouseFollow";
 import { useEffect, useState } from "react";
 import LogoScale from "./component/logoScale";
 import MyDrawer from "../../component/drawer";
-import loreLogo from "@/assets/img/loreLogo.png";
+import copybookLogo from "@/assets/img/copybookLogo.png";
 import manifestoLogo from "@/assets/img/manifestoLogo.png";
 import visionLogo from "@/assets/img/visionLogo.png";
 import Smokebg from "../../component/smokebg";
 import { useNavigate } from "react-router-dom";
 import HomePage2 from "../homePage2";
 // import MouseFire from "../../component/mouseFire";
-const loreText = (
+const copybookText = (
   <>
     <p>
-      Recently, Manhattanites have noticed that on Madison Avenue, one
-      best-location luxury shop is being renovated under the new sign, Klass. At
-      the same time, many celebrities have also received invitations to the
-      fashion show of its menswear Launch Collection.
+      此徽章授予在书法临摹与练习中展现出非凡毅力与卓越成就的书写者。它象征着对传统笔墨的深刻理解，对点画结构的精准把握，是勤奋与天赋的共同加冕。获此徽章者，乃是以恒心磨砺笔锋，以心灵对话古帖的字帖达人。
     </p>
-    <p>
-      However, what no one has expected is that behind Klass’s unconcealed
-      glamour, there is actually the most noble and skillful agent organization
-      in the world. Both the shop and the fashion show are just a cover for the
-      true entrance of this world.
-    </p>
-    <p>
-      Once a man joins Klass, his previous background, education and jobs are no
-      longer important. The only important thing is their new identity
-      "Klassmate". The word stands for eternal manners, nobility, and loyalty
-      until death.
-    </p>
-    <p>
-      When you see a Klassmate, don’t get fooled by his Klassy outfit. It’s just
-      to remind himself of what makes him a man. And Klass outfits are always
-      bulletproof. Such a decent gentleman is actually a well-trained agent who
-      has survived the most dangerous conditions and performed the most
-      challenging missions.
-    </p>
+    <p>领取方式：累计打卡14天就能领取</p>
   </>
 );
 const manifestoText = (
@@ -83,12 +62,80 @@ const Index = () => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true); //true
   const [avtive, setAvtive] = useState(undefined);
-  const [logo, setLogo] = useState(loreLogo);
-  const [intro, setIntro] = useState(loreText);
+  const [logo, setLogo] = useState(copybookLogo);
+  const [intro, setIntro] = useState(copybookText);
   const [visibleAll, setVisibleAll] = useState(false);
   const [visible2, setVisible2] = useState(false);
   const [visible3, setVisible3] = useState(false);
   const [visibleLogo, setVisibleLogo] = useState(false);
+
+  useEffect(() => {
+    let str = localStorage.getItem("badge");
+    if (!JSON.parse(str)) {
+      localStorage.setItem(
+        "badge",
+        JSON.stringify([
+          {
+            name: "copybook",
+            title:'字帖达人秀获奖名单',
+            user: [
+              "张三",
+              "李四",
+              "王五",
+              "赵六",
+              "钱七",
+              "孙八",
+              "周九",
+              "吴十",
+              "郑十一",
+              "冯十二",
+              "陈十三",
+              "褚十四",
+              "卫十五",
+            ],
+          },
+          {
+            name: "manifesto",
+            title:'类型2获奖名单',
+            user: [
+              "张三2",
+              "李四2",
+              "王五2",
+              "赵六2",
+              "钱七2",
+              "孙八2",
+              "周九2",
+              "吴十2",
+              "郑十一2",
+              "冯十二2",
+              "陈十三2",
+              "褚十四2",
+              "卫十五",
+            ],
+          },
+          {
+            name: "vision",
+            title:'类型3获奖名单',
+            user: [
+              "张三3",
+              "李四3",
+              "王五3",
+              "赵六3",
+              "钱七3",
+              "孙八3",
+              "周九3",
+              "吴十3",
+              "郑十一3",
+              "冯十二3",
+              "陈十三3",
+              "褚十四3",
+              "卫十五",
+            ],
+          },
+        ])
+      );
+    }
+  }, []);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -111,9 +158,9 @@ const Index = () => {
     setOpen(true);
     setAvtive(e);
     switch (e) {
-      case "lore":
-        setLogo(loreLogo);
-        setIntro(loreText);
+      case "copybook":
+        setLogo(copybookLogo);
+        setIntro(copybookText);
         break;
       case "manifesto":
         setLogo(manifestoLogo);
@@ -183,11 +230,11 @@ const Index = () => {
                     <div className="nav-bar" style={{ visibility: "visible" }}>
                       <div
                         className={`sub-title slide-bar ${
-                          avtive === "lore" && "active"
+                          avtive === "copybook" && "active"
                         }`}
-                        onClick={() => showDrawer("lore")}
+                        onClick={() => showDrawer("copybook")}
                       >
-                        LORE
+                        字帖
                       </div>
                       <div
                         className={`sub-title slide-bar ${
@@ -195,7 +242,7 @@ const Index = () => {
                         }`}
                         onClick={() => showDrawer("manifesto")}
                       >
-                        MANIFESTO
+                        类型2
                       </div>
                       <div
                         className={`sub-title slide-bar ${
@@ -203,12 +250,12 @@ const Index = () => {
                         }`}
                         onClick={() => showDrawer("vision")}
                       >
-                        VISION
+                        类型3
                       </div>
                     </div>
                   )}
 
-                  <span
+                  {/* <span
                     className="item luminous"
                     style={{
                       margin: 0,
@@ -219,7 +266,7 @@ const Index = () => {
                     onClick={() => navigate("/wl-application")}
                   >
                     WL APPLICATION
-                  </span>
+                  </span> */}
                 </div>
 
                 <div className="r-center">
@@ -228,8 +275,8 @@ const Index = () => {
                     <div className="gradually">
                       {visibleLogo && (
                         <div style={{ visibility: "visible" }}>
-                          <div className="title slide-bar">klass.</div>
-                          <div className="title slide-bar">town</div>
+                          <div className="title slide-bar">葫芦老师</div>
+                          <div className="title slide-bar">小课堂</div>
                         </div>
                       )}
 
@@ -242,23 +289,14 @@ const Index = () => {
                               : { visibility: "hidden" }
                           }
                         >
-                          <span style={{ animationDelay: "0s" }}>F</span>
-                          <span style={{ animationDelay: "0.15s" }}>A</span>
-                          <span style={{ animationDelay: "0.3s" }}>S</span>
-                          <span style={{ animationDelay: "0.45s" }}>H</span>
-                          <span style={{ animationDelay: "0.6s" }}>I</span>
-                          <span style={{ animationDelay: "0.75s" }}>O</span>
-                          <span style={{ animationDelay: "0.9s" }}>N</span>
-                          <span style={{ animationDelay: "1.05s" }}> </span>
-                          <span style={{ animationDelay: "1.2s" }}>X</span>
-                          <span style={{ animationDelay: "1.35s" }}> </span>
-                          <span style={{ animationDelay: "1.5s" }}>M</span>
-                          <span style={{ animationDelay: "1.65s" }}>I</span>
-                          <span style={{ animationDelay: "1.8s" }}>S</span>
-                          <span style={{ animationDelay: "1.95s" }}>S</span>
-                          <span style={{ animationDelay: "2.1s" }}>I</span>
-                          <span style={{ animationDelay: "2.25s" }}>O</span>
-                          <span style={{ animationDelay: "2.4s" }}>N</span>
+                          {"万成文学趣味人文课程".split("").map((char, idx) => (
+                            <span
+                              key={idx}
+                              style={{ animationDelay: 0.15 * idx + "s" }}
+                            >
+                              {char}
+                            </span>
+                          ))}
                         </span>
                       )}
                     </div>
@@ -274,9 +312,9 @@ const Index = () => {
             <MouseFollow />
             <Smokebg />
           </section>
-          <section>
+          {/* <section>
             <HomePage2 />
-          </section>
+          </section> */}
         </div>
       )}
     </>

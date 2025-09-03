@@ -28,7 +28,7 @@ const RcBullet = ({ login }) => {
   useEffect(() => {
     if (screen) {
       setInterval(() => {
-        getBarrage();
+        // getBarrage();
       }, 15000);
     }
   }, [screen]);
@@ -147,9 +147,7 @@ const RcBullet = ({ login }) => {
   return (
     <div className="send">
       <div
-        className={`emojiIcon ${
-          showEmojiPicker == true ? "showEmojiPicker" : ""
-        }`}
+        className={`emojiIcon ${showEmojiPicker ? "showEmojiPicker" : ""}`}
         onClick={() => {
           setShowEmojiPicker(!showEmojiPicker);
         }}
@@ -160,7 +158,7 @@ const RcBullet = ({ login }) => {
         </div>
       )}
       <div className="textArea">
-        {!login ? (
+        {/* {!login ? (
           <Tooltip
             placement="topLeft"
             title="You need to be a co-creator first. Please sign up!"
@@ -183,7 +181,7 @@ const RcBullet = ({ login }) => {
               maxLength={220}
             />
           </Tooltip>
-        ) : (
+        ) : ( */}
           <Input
             ref={areaRel}
             className="textAreaComp"
@@ -193,7 +191,7 @@ const RcBullet = ({ login }) => {
             value={text}
             maxLength={220}
           />
-        )}
+        {/* )} */}
       </div>
 
       {/* <input value={bullet} onChange={handleChange} /> */}

@@ -27,8 +27,13 @@
       width: 0px;
     }
 
+    //- `chunk-top`: 动画的名称（keyframes名称）
+    //- `5.5s`: 动画的持续时间，表示一个周期持续5.5秒
+    //- `5s`: 动画的延迟时间，表示在启动前等待5秒
+    //- `ease`: 动画的速度曲线，默认是ease（缓慢开始，然后加快，最后缓慢结束）
+    //- `infinite`: 动画的迭代次数，表示无限循环
     &::before {
-      animation: chunk-top 5.5s 5s ease infinite;
+      animation: chunk-top 3s 0.5s ease infinite;
       border: 3.9vw solid @theme;
       border-left-color: transparent;
       border-bottom-color: transparent;
@@ -37,7 +42,7 @@
     }
 
     &::after {
-      animation: chunk-bottom 5.5s 5s ease infinite;
+      animation: chunk-bottom 3s 0.5s ease infinite;
       border: 3.9vw solid @theme;
       border-right-color: transparent;
       border-top-color: transparent;
@@ -123,7 +128,7 @@
   }
 
   to {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
 
